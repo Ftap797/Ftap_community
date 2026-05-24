@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>FTAP Community</title>
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='10' y='80' font-size='70'>🌀</text></svg>">
     <style>
         * {
             margin: 0;
@@ -13,19 +12,18 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0a0a2a 0%, #1a1a3a 100%);
-            color: white;
+            background: #0a0a0a;
+            color: #e0e0e0;
             line-height: 1.6;
         }
 
         .navbar {
-            background: rgba(0, 0, 0, 0.8);
+            background: #111111;
             padding: 12px 20px;
             position: sticky;
             top: 0;
             z-index: 100;
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid #ff00ff;
+            border-bottom: 1px solid #6a0dad;
         }
 
         .nav-container {
@@ -40,11 +38,12 @@
         .logo {
             font-size: 24px;
             font-weight: bold;
+            color: #6a0dad;
         }
 
-        .logo-icon { color: #ff00ff; }
-        .logo-text { color: white; }
-        .logo-accent { color: #ff00ff; }
+        .logo-text {
+            color: #e0e0e0;
+        }
 
         .nav-links {
             display: flex;
@@ -54,47 +53,50 @@
         }
 
         .nav-links a {
-            color: white;
+            color: #cccccc;
             text-decoration: none;
             font-size: 13px;
             transition: 0.3s;
         }
 
-        .nav-links a:hover { color: #ff00ff; }
+        .nav-links a:hover {
+            color: #9b4dff;
+        }
 
         .hero {
             text-align: center;
             padding: 40px 20px;
-            background: linear-gradient(135deg, #0f0f2f 0%, #1f1f4f 100%);
+            background: #0f0f0f;
+            border-bottom: 1px solid #222;
         }
 
         .hero-title {
             font-size: 36px;
             margin-bottom: 15px;
+            color: #ffffff;
         }
 
         .gradient-text {
-            background: linear-gradient(45deg, #ff00ff, #00ffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #9b4dff;
         }
 
         .hero-subtitle {
             font-size: 16px;
-            color: #aaa;
+            color: #aaaaaa;
         }
 
         .section {
             max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
+            border-bottom: 1px solid #1a1a1a;
         }
 
         .section-title {
             font-size: 28px;
             text-align: center;
             margin-bottom: 25px;
-            color: #ff00ff;
+            color: #9b4dff;
         }
 
         .cards {
@@ -104,23 +106,23 @@
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.1);
+            background: #151515;
             border-radius: 15px;
             padding: 20px;
             text-align: center;
             transition: 0.3s;
-            border: 1px solid rgba(255, 0, 255, 0.3);
+            border: 1px solid #2a2a2a;
         }
 
         .card:hover {
             transform: translateY(-5px);
-            border-color: #ff00ff;
-            box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+            border-color: #6a0dad;
+            box-shadow: 0 0 15px rgba(106, 13, 173, 0.2);
         }
 
         .creator-card {
-            background: linear-gradient(135deg, rgba(255,0,255,0.2), rgba(0,255,255,0.2));
-            border: 2px solid #ff00ff;
+            background: #151515;
+            border: 2px solid #6a0dad;
             max-width: 600px;
             margin: 0 auto;
         }
@@ -132,20 +134,31 @@
         }
 
         .gamepass {
-            background: rgba(0, 0, 0, 0.5);
+            background: #151515;
             border-radius: 10px;
             padding: 15px;
-            border-left: 4px solid #ff00ff;
+            border-left: 4px solid #6a0dad;
         }
 
-        .gamepass-name { font-size: 18px; font-weight: bold; }
-        .gamepass-price { color: #ff00ff; font-size: 16px; margin: 5px 0; }
-        .gamepass-desc { color: #aaa; font-size: 12px; }
+        .gamepass-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        .gamepass-price {
+            color: #9b4dff;
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        .gamepass-desc {
+            color: #aaaaaa;
+            font-size: 12px;
+        }
 
         .top-table {
             width: 100%;
             border-collapse: collapse;
-            background: rgba(0, 0, 0, 0.5);
+            background: #111111;
             border-radius: 12px;
             overflow: hidden;
             margin-bottom: 30px;
@@ -154,18 +167,20 @@
         .top-table th, .top-table td {
             padding: 10px;
             text-align: center;
-            border-bottom: 1px solid rgba(255, 0, 255, 0.3);
+            border-bottom: 1px solid #2a2a2a;
         }
 
         .top-table th {
-            background: rgba(255, 0, 255, 0.2);
-            color: #ff00ff;
+            background: #1a1a1a;
+            color: #9b4dff;
         }
 
-        .top-table tr:hover { background: rgba(255, 0, 255, 0.1); }
-        .rank-1 { color: gold; font-weight: bold; }
-        .rank-2 { color: silver; font-weight: bold; }
-        .rank-3 { color: #cd7f32; font-weight: bold; }
+        .top-table tr:hover {
+            background: #1a1a1a;
+        }
+        .rank-1 { color: #ffffff; font-weight: bold; background: #1f1f1f; }
+        .rank-2 { color: #cccccc; font-weight: bold; }
+        .rank-3 { color: #aaaaaa; font-weight: bold; }
 
         .scripts-grid {
             display: grid;
@@ -174,28 +189,37 @@
         }
 
         .script-card {
-            background: rgba(0, 0, 0, 0.5);
+            background: #151515;
             border-radius: 12px;
             padding: 15px;
-            border-top: 3px solid #ff00ff;
+            border-top: 3px solid #6a0dad;
         }
 
-        .script-name { font-size: 20px; font-weight: bold; margin-bottom: 8px; color: #ff00ff; }
-        .script-desc { color: #ccc; font-size: 12px; margin-bottom: 8px; }
+        .script-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #9b4dff;
+        }
+        .script-desc {
+            color: #bbbbbb;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
 
         .chat-container {
             position: fixed;
             bottom: 20px;
             right: 20px;
             width: 280px;
-            background: rgba(0, 0, 0, 0.95);
+            background: #111111;
             border-radius: 12px;
-            border: 1px solid #ff00ff;
+            border: 1px solid #2a2a2a;
             z-index: 1000;
         }
 
         .chat-header {
-            background: #ff00ff;
+            background: #1a1a1a;
             padding: 6px 10px;
             border-radius: 12px 12px 0 0;
             cursor: pointer;
@@ -203,6 +227,7 @@
             display: flex;
             justify-content: space-between;
             font-size: 12px;
+            color: #9b4dff;
         }
 
         .chat-messages {
@@ -210,18 +235,19 @@
             overflow-y: auto;
             padding: 8px;
             font-size: 11px;
+            color: #cccccc;
         }
 
         .chat-input {
             display: flex;
             padding: 6px;
             gap: 4px;
-            border-top: 1px solid #333;
+            border-top: 1px solid #222;
         }
 
         .chat-input input {
             flex: 1;
-            background: rgba(255, 255, 255, 0.1);
+            background: #1a1a1a;
             border: none;
             border-radius: 6px;
             padding: 5px;
@@ -229,20 +255,21 @@
         }
 
         .chat-input button {
-            background: #ff00ff;
-            border: none;
+            background: #1a1a1a;
+            border: 1px solid #6a0dad;
             border-radius: 6px;
             padding: 5px 10px;
-            color: white;
+            color: #9b4dff;
             cursor: pointer;
         }
 
         .footer {
             text-align: center;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            border-top: 1px solid #ff00ff;
+            background: #0a0a0a;
+            border-top: 1px solid #1a1a1a;
             font-size: 11px;
+            color: #777777;
         }
 
         @media (max-width: 768px) {
@@ -256,8 +283,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <span class="logo-icon">🌀</span>
-                <span class="logo-text">FTAP<span class="logo-accent">CIS</span></span>
+                <span class="logo-text">FTAP</span><span>CIS</span>
             </div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
@@ -278,17 +304,17 @@
     </section>
 
     <section id="about" class="section">
-        <h2 class="section-title">🎮 About FTAP</h2>
+        <h2 class="section-title">About FTAP</h2>
         <div class="cards">
-            <div class="card"><div class="card-icon">🟣</div><h3>Purple Liquid</h3><p>Under the floating island</p></div>
-            <div class="card"><div class="card-icon">📦</div><h3>Grabbing Items</h3><p>Grab and throw objects</p></div>
-            <div class="card"><div class="card-icon">🚂</div><h3>Train</h3><p>Travel between locations</p></div>
-            <div class="card"><div class="card-icon">🪙</div><h3>Slot Machines</h3><p>Earn coins every 15 min</p></div>
+            <div class="card"><h3>Purple Liquid</h3><p>Under the floating island</p></div>
+            <div class="card"><h3>Grabbing Items</h3><p>Grab and throw objects</p></div>
+            <div class="card"><h3>Train</h3><p>Travel between locations</p></div>
+            <div class="card"><h3>Slot Machines</h3><p>Earn coins every 15 min</p></div>
         </div>
     </section>
 
     <section id="passes" class="section">
-        <h2 class="section-title">💎 GAMEPASSES</h2>
+        <h2 class="section-title">GAMEPASSES</h2>
         <div class="gamepasses">
             <div class="gamepass"><div class="gamepass-name">Farther Reach</div><div class="gamepass-price">225 Robux</div><div class="gamepass-desc">Increases grab range</div></div>
             <div class="gamepass"><div class="gamepass-name">Multi-Color Line</div><div class="gamepass-price">45 Robux</div><div class="gamepass-desc">Colorful grab line</div></div>
@@ -301,7 +327,7 @@
     </section>
 
     <section id="history" class="section">
-        <h2 class="section-title">📜 ALL-TIME TOP</h2>
+        <h2 class="section-title">ALL-TIME TOP</h2>
         <table class="top-table">
             <tr><th>#</th><th>Player</th></tr>
             <tr><td class="rank-1">1</td><td>Markakela</td></tr>
@@ -312,260 +338,194 @@
             <tr><td>6</td><td>Welosew</td></tr>
             <tr><td>7</td><td>Flintex</td></tr>
             <tr><td>8</td><td>Meow</td></tr>
-            <tr><td>9</td><td>Lensor</tr></table>
-            <tr><td class="rank-1">1</td><td>Markakela</td>
-                </tr><tr><td class="rank-2">2</td><td>Keenawareeness</td>
-                </tr><tr><td class="rank-3">3</td><td>Lal</td>
-                </tr><tr><td>4</td><td>Reflex</td>
-                </tr><tr><td>5</td><td>Rellizeez</td>
-                </tr><tr><td>6</td><td>Welosew</td>
-                </tr><tr><td>7</td><td>Flintex</td>
-                </tr><tr><td>8</td><td>Meow</td>
-                </tr><tr><td>9</td><td>Lensor</td>
-                </tr><tr><td>10</td><td>Drezz</td>
-                </tr><tr><td>11</td><td>Derealization</td>
-                </tr><tr><td>12</td><td>Centurion</td>
-                </tr>
-            </table>
-            <h3 style="color:#ff00ff; margin:20px 0 15px;">🏆 TOP CIS RIGHT NOW</h3>
-            <table class="top-table">
-                <tr><th>#</th><th>Player</th></tr>
-                <tr><td class="rank-1">1</td><td>Markakela</td>
-                </tr><tr><td class="rank-2">2</td><td>Reflex</td>
-                </tr><tr><td class="rank-3">3</td><td>Lorex</td>
-                </tr><tr><td>4</td><td>Rellizeez</td>
-                </tr><tr><td>5</td><td>Welosew</td>
-                </tr>
-            </table>
-        </section>
+            <tr><td>9</td><td>Lensor</td></tr>
+            <tr><td>10</td><td>Drezz</td></tr>
+            <tr><td>11</td><td>Derealization</td></tr>
+            <tr><td>12</td><td>Centurion</td></tr>
+        </table>
+        <h3 class="gradient-text" style="margin:20px 0 15px;">TOP CIS RIGHT NOW</h3>
+        <table class="top-table">
+            <tr><th>#</th><th>Player</th></tr>
+            <tr><td class="rank-1">1</td><td>Markakela</td></tr>
+            <tr><td class="rank-2">2</td><td>Reflex</td></tr>
+            <tr><td class="rank-3">3</td><td>Lorex</td></tr>
+            <tr><td>4</td><td>Rellizeez</td></tr>
+            <tr><td>5</td><td>Welosew</td></tr>
+        </table>
+    </section>
 
-        <section id="coders" class="section">
-            <h2 class="section-title">💀 TOP CODERS (KICK SCRIPTS)</h2>
-            <div class="cards">
-                <div class="card"><div class="card-icon">1</div><h3>range</h3><p>Best kick scripter</p></div>
-                <div class="card"><div class="card-icon">2</div><h3>vhck</h3><p>Kick script master</p></div>
-                <div class="card"><div class="card-icon">3</div><h3>gree</h3><p>Quality scripts</p></div>
-                <div class="card"><div class="card-icon">4</div><h3>vexeks</h3><p>Experienced developer</p></div>
-                <div class="card"><div class="card-icon">5</div><h3>marshel, m1kpe</h3><p>Top coder duo</p></div>
-                <div class="card"><div class="card-icon">6</div><h3>onlylose, locality</h3><p>Unique kick mechanics</p></div>
-                <div class="card"><div class="card-icon">7</div><h3>rip</h3><p>Famous kick scripts</p></div>
-                <div class="card"><div class="card-icon">8</div><h3>tapalka</h3><p>Legendary scripter</p></div>
-                <div class="card"><div class="card-icon">9</div><h3>blizt</h3><p>Modern solutions</p></div>
-            </div>
-            <p style="text-align:center; margin-top:15px; color:#ff00ff;">⚡ All coders create kick scripts</p>
-        </section>
+    <section id="coders" class="section">
+        <h2 class="section-title">TOP CODERS (KICK SCRIPTS)</h2>
+        <div class="cards">
+            <div class="card"><h3>range</h3><p>Best kick scripter</p></div>
+            <div class="card"><h3>vhck</h3><p>Kick script master</p></div>
+            <div class="card"><h3>gree</h3><p>Quality scripts</p></div>
+            <div class="card"><h3>vexeks</h3><p>Experienced developer</p></div>
+            <div class="card"><h3>marshel, m1kpe</h3><p>Top coder duo</p></div>
+            <div class="card"><h3>onlylose, locality</h3><p>Unique kick mechanics</p></div>
+            <div class="card"><h3>rip</h3><p>Famous kick scripts</p></div>
+            <div class="card"><h3>tapalka</h3><p>Legendary scripter</p></div>
+            <div class="card"><h3>blizt</h3><p>Modern solutions</p></div>
+        </div>
+        <p style="text-align:center; margin-top:15px; color:#888;">All coders create kick scripts</p>
+    </section>
 
-        <section id="scriptstop" class="section">
-            <h2 class="section-title">⚔️ HvH SCRIPTS TOP</h2>
-            <table class="top-table">
-                <tr><th>#</th><th>Script</th></tr>
-                <tr><td class="rank-1">1</td><td>The Worst | Mercury</td>
-                </tr><tr><td class="rank-2">2</td><td>Resonanse</td>
-                </tr><tr><td class="rank-3">3</td><td>INIT [unknown]</td>
-                </tr><tr><td>4</td><td>Phoenix (hub)</td>
-                </tr><tr><td>5</td><td>Grape [unknown]</td>
-                </tr><tr><td>6</td><td>BlizT (prem)</td>
-                </tr><tr><td>7</td><td>Rip (hub)</td>
-                </tr><tr><td>8</td><td>SRV9 (prem)</td>
-                </tr><tr><td>9</td><td>Saturnium</td>
-                </tr>
-            </table>
-            <p style="text-align:center; margin-top:15px; color:#aaa;">No top. Menaton-[No release] (without top)</p>
-        </section>
+    <section id="scriptstop" class="section">
+        <h2 class="section-title">HvH SCRIPTS TOP</h2>
+        <table class="top-table">
+            <tr><th>#</th><th>Script</th></tr>
+            <tr><td class="rank-1">1</td><td>The Worst | Mercury</td></tr>
+            <tr><td class="rank-2">2</td><td>Resonanse</td></tr>
+            <tr><td class="rank-3">3</td><td>INIT [unknown]</td></tr>
+            <tr><td>4</td><td>Phoenix (hub)</td></tr>
+            <tr><td>5</td><td>Grape [unknown]</td></tr>
+            <tr><td>6</td><td>BlizT (prem)</td></tr>
+            <tr><td>7</td><td>Rip (hub)</td></tr>
+            <tr><td>8</td><td>SRV9 (prem)</td></tr>
+            <tr><td>9</td><td>Saturnium</td></tr>
+        </table>
+        <p style="text-align:center; margin-top:15px; color:#666;">No top. Menaton-[No release] (without top)</p>
+    </section>
 
-        <section id="personalities" class="section">
-            <h2 class="section-title">👤 ЛИЧНОСТИ СООБЩЕСТВА</h2>
-            <div class="card" style="margin-bottom: 25px; border-color: #00ff88;">
-                <div class="card-icon">✅</div>
-                <h3 style="color: #00ff88;">Tapalka</h3>
-                <p><strong>Хороший и уважаемый кодер.</strong> Открыт к общению, помогает новичкам, не конфликтует.</p>
-            </div>
-            <div class="card" style="margin-bottom: 25px; border-color: #ff4444; background: rgba(255,0,0,0.1);">
-                <div class="card-icon">👎</div>
-                <h3 style="color: #ff6666;">Revers</h3>
-                <p><strong>Токсичный кодер.</strong> При малейшем обзывании начинает рыдать и токсичить.</p>
-            </div>
-            <div class="card" style="margin-bottom: 25px; border-color: #ffaa00;">
-                <div class="card-icon">👑</div>
-                <h3 style="color: #ffaa00;">Omaundjoner</h3>
-                <p><strong>Создатель Discord-сервера FTAP Community.</strong> Адекватный, не конфликтует.</p>
-            </div>
-            <div class="card" style="margin-bottom: 25px; border-color: #00aaff;">
-                <div class="card-icon">👥</div>
-                <h3 style="color: #00aaff;">Eshka и его команда</h3>
-                <p><strong>⚡ Eshka</strong> — хороший кодер.<br><strong>treqw</strong> — кодер для себя.<br><strong>sedativete</strong> — милый и крутой.<br><strong>wushathesecond</strong> — отличный кодер.</p>
-            </div>
-            <div class="card" style="border-color: #ff88cc;">
-                <div class="card-icon">🐱</div>
-                <h3 style="color: #ff88cc;">luakitty</h3>
-                <p><strong>Хороший кодер и милый по общению.</strong> Всегда приятно иметь дело, не конфликтует, помогает советом.</p>
+    <section id="personalities" class="section">
+        <h2 class="section-title">ЛИЧНОСТИ СООБЩЕСТВА</h2>
+        <div class="card" style="margin-bottom: 25px;"><h3>Tapalka</h3><p>Хороший и уважаемый кодер. Открыт к общению, помогает новичкам, не конфликтует.</p></div>
+        <div class="card" style="margin-bottom: 25px; background: #151515;"><h3>Revers</h3><p>Токсичный кодер. При малейшем обзывании начинает рыдать и токсичить.</p></div>
+        <div class="card" style="margin-bottom: 25px;"><h3>Omaundjoner</h3><p>Создатель Discord-сервера FTAP Community. Адекватный, не конфликтует.</p></div>
+        <div class="card" style="margin-bottom: 25px;"><h3>Eshka и его команда</h3><p>Eshka — хороший кодер.<br>treqw — кодер для себя.<br>sedativete — милый и крутой.<br>wushathesecond — отличный кодер.</p></div>
+        <div class="card"><h3>luakitty</h3><p>Хороший кодер и милый по общению. Не конфликтует, помогает советом.</p></div>
+    </section>
 
-   <section id="retaktrul" class="section">
-        <h2 class="section-title">⚔️ ReTacTruL</h2>
-        <div class="card" style="border-color: #ffaa44; background: rgba(255,170,68,0.1);">
-            <div class="card-icon">🏆</div>
-            <h3 style="color: #ffaa44;">ReTacTruL</h3>
-            <p style="margin-top: 10px;">
-                <strong>Бывший топ-15 игрок СНГ в FTAP.</strong> На пике своей карьеры входил в число лучших PvP-бойцов сообщества.
-
-
-            </p>
-            <p style="margin-top: 10px;">
-                🛡️ <strong>Клан:</strong> Состоял в <strong style="color:#ffaa44;">SC</strong> — клане, который занимал <strong>1-е место в СНГ в течение примерно года</strong>.
-            </p>
-            <p style="margin-top: 10px;">
-                📅 <strong>Период активности:</strong> SC удерживал топ-1 или топ 2 на протяжении длительного времени (примерно полугода), и ReTacTruL  был ключевым игроком того состава и кроме того был лидером сц.
-            </p>
-            <p style="margin-top: 10px; color: #ffaa44;">
-                ⚔️ <strong>Статус:</strong> Легенда прошлого, чьё имя помнят старожилы FTAP.
-            </p>
+    <section id="retaktrul" class="section">
+        <h2 class="section-title">ReTacTruL</h2>
+        <div class="card">
+            <h3>ReTacTruL</h3>
+            <p>Бывший топ-15 игрок СНГ в FTAP. На пике своей карьеры входил в число лучших PvP-бойцов сообщества.</p>
+            <p>Клан: Состоял в SC — клане, который занимал 1-е место в СНГ примерно год.</p>
+            <p>Период активности: SC удерживал топ-1 или топ-2 на протяжении длительного времени (примерно полугода), и ReTacTruL был ключевым игроком того состава, а также лидером SC.</p>
+            <p>Статус: Легенда прошлого, чьё имя помнят старожилы FTAP.</p>
         </div>
     </section>
-            </div>
-        </section>
-        <div class="card" style="margin-bottom: 25px; border-color: #ffaa44;">
-            <div class="card-icon">👑</div>
-            <h3 style="color: #ffaa44;">Werty</h3>
-            <p><strong>Создатель клана KoJ.</strong> Лидер, который построил один из сильнейших кланов в PvP-сцене FTAP.</p>
-            <p style="margin-top: 8px; color: #ffaa44;">🎯 <strong>Особенность:</strong> Амбициозный, целеустремлённый, создал топ-1 клан по PvP.</p>
-        </div>
 
-        <section id="clans" class="section">
-            <h2 class="section-title">⚔️ Репутация кланов.</h2>
-            <div class="card" style="margin-bottom: 25px; border-color: #00aaff;">
-                <div class="card-icon">🌊</div>
-                <h3 style="color: #00aaff;">Baltiki (Seb + Ega)</h3>
-                <p><strong>Клан скриптеров.</strong> Известны токсичностью.</p>
-            </div>
-            <div class="card" style="margin-bottom: 25px; border-color: #88ff88;">
-                <div class="card-icon">💚</div>
-                <h3 style="color: #88ff88;">Cores</h3>
-                <p><strong>Приятный и дружелюбный клан.</strong> Помогают новичкам, не конфликтуют.</p>
-            </div>
-            <div class="card" style="margin-bottom: 25px; border-color: #ffaa00;">
-                <div class="card-icon">🏚️</div>
-                <h3 style="color: #ffaa00;">MC</h3>
-                <p><strong>Был разрушен, но восстанавливается.</strong> До разрушения был приятным кланом.</p>
-            </div>
-            <div class="card" style="margin-bottom: 25px; border-color: #ff6666;">
-                <div class="card-icon">👎</div>
-                <h3 style="color: #ff6666;">BD</h3>
-                <p><strong>Неприятный клан.</strong> Токсичное поведение, лучше избегать.</p>
-            </div>
-        <div class="card" style="margin-bottom: 25px; border-color: #ffaa44;">
-            <div class="card-icon">⚔️</div>
-            <h3 style="color: #ffaa44;">KoJ</h3>
-            <p><strong>Токсичный, но очень сильный клан.</strong> Игроки готовы помочь, лидеры добрые и отзывчивые.</p>
-            <p style="margin-top: 8px;">👑 <strong>Лидеры:</strong> Centurion и Werty.</p>
-            <p style="margin-top: 8px; color: #ffaa44;">🔥 <strong>Статус:</strong> Сила + токсичность + взаимопомощь.</p>
+    <section id="clans" class="section">
+        <h2 class="section-title">РЕПУТАЦИЯ КЛАНОВ</h2>
+        <div class="cards">
+            <div class="card"><h3>Baltiki (Seb + Ega)</h3><p>Клан скриптеров. Известны токсичностью.</p></div>
+            <div class="card"><h3>Cores</h3><p>Приятный и дружелюбный клан. Помогают новичкам, не конфликтуют.</p></div>
+            <div class="card"><h3>MC</h3><p>Был разрушен, но восстанавливается. До разрушения был приятным кланом.</p></div>
+            <div class="card"><h3>BD</h3><p>Неприятный клан. Токсичное поведение, лучше избегать.</p></div>
+            <div class="card"><h3>KoJ</h3><p>Токсичный, но очень сильный клан. Игроки готовы помочь, лидеры добрые и отзывчивые. Лидеры: Centurion и Werty.</p></div>
+        <div class="card" style="margin-bottom: 25px;">
+            <h3 style="color: #9b4dff;">DIN</h3>
+            <p><strong>Дружелюбный и очень активный клан.</strong> В основном общается в Telegram, создавая примерно 5000 сообщений в день. В Discord-канале проходят преимущественно голосовые звонки.</p>
+            <p><strong>Лидер</strong> — довольно строгий человек, который неукоснительно следит за соблюдением правил и порядка в клане.</p>
+            <p style="color: #ccc; margin-top: 8px;">Статус: Очень активен в Telegram, строгая дисциплина.</p>
         </div>
-
+        </div>
+    </section>
 
     <section id="clanspvp" class="section">
-        <h2 class="section-title">🏆 ТОП КЛАНОВ ПО PVP (НА ДАННЫЙ МОМЕНТ)</h2>
-        <div class="card" style="text-align: left;">
-            <ol style="margin-left: 20px; line-height: 1.8;">
-                <li><strong style="color: #ffaa44;">KoJ</strong> — 1 место</li>
-                <li><strong style="color: #88aaff;">DIN</strong> — 2 место</li>
-                <li><strong style="color: #ff6666;">BD</strong> — 3 место</li>
-                <li><strong style="color: #88ff88;">SoV</strong> — 4 место</li>
-                <li><strong style="color: #aa88ff;">JL</strong> — 5 место</li>
+        <h2 class="section-title">ТОП КЛАНОВ ПО PVP (НА ДАННЫЙ МОМЕНТ)</h2>
+        <div class="card">
+            <ol style="margin-left: 20px;">
+                <li><strong>KoJ</strong> — 1 место</li>
+                <li><strong>DIN</strong> — 2 место</li>
+                <li><strong>BD</strong> — 3 место</li>
+                <li><strong>SoV</strong> — 4 место</li>
+                <li><strong>JL</strong> — 5 место</li>
             </ol>
-            <p style="margin-top: 15px; color: #aaa; font-size: 12px;">⚠️ Топ составлен на основе личного мнения и может не совпадать с мнением других.</p>
+            <p style="margin-top: 15px; color: #888;">Топ составлен на основе личного мнения и может не совпадать с мнением других.</p>
         </div>
     </section>
-  
+
     <section id="clanshvh" class="section">
-        <h2 class="section-title">🔥 ТОП КЛАНОВ ПО HVH (НА ДАННЫЙ МОМЕНТ)</h2>
-        <div class="card" style="text-align: left;">
-            <ol style="margin-left: 20px; line-height: 1.8;">
-                <li><strong style="color: #ff55aa;">PDD и URAL</strong> — 1 место</li>
-                <li><strong style="color: #55aaff;">EGA</strong> — 2 место</li>
-                <li><strong style="color: #88ff88;">KoJ</strong> — 3 место</li>
-                <li><strong style="color: #ffaa44;">AV</strong> — 4 место</li>
-                <li><strong style="color: #ffaa44;">SEB</strong> — 5 место</li>
+        <h2 class="section-title">ТОП КЛАНОВ ПО HVH (НА ДАННЫЙ МОМЕНТ)</h2>
+        <div class="card">
+            <ol style="margin-left: 20px;">
+                <li><strong>PDD и URAL</strong> — 1 место</li>
+                <li><strong>EGA</strong> — 2 место</li>
+                <li><strong>KoJ</strong> — 3 место</li>
+                <li><strong>AV</strong> — 4 место</li>
+                <li><strong>SEB</strong> — 5 место</li>
             </ol>
-            <p style="margin-top: 15px; color: #aaa; font-size: 12px;">⚠️ Топ составлен на основе личного мнения и может не совпадать с мнением других.</p>
+            <p style="margin-top: 15px; color: #888;">Топ составлен на основе личного мнения и может не совпадать с мнением других.</p>
         </div>
     </section>
-  
- 
 
-        <section id="creator" class="section">
-            <h2 class="section-title">👨‍💻 О СОЗДАТЕЛЕ</h2>
-            <div class="card creator-card">
-                <div class="card-icon">✨</div>
-                <h3 style="color: #ff00ff; font-size: 28px;">Warrior</h3>
-                <p>Никнейм: <strong style="color:#00ffff;">Warrior</strong></p>
-                <p>🎂 Возраст: <strong>13 лет</strong></p>
-                <p>💻 Навыки: <strong>Lua, Python</strong></p>
-                <p>🎮 Создал: <strong>Neon чат для Roblox</strong></p>
-                <p>🌐 Создал этот сайт</p>
-                <div style="margin-top: 20px;">
-                    <p>📢 <strong>Дискорд:</strong> @developerk._</p>
-                    <p>🔗 <strong>Roblox профиль:</strong> @argundless</p>
-                </div>
-            </div>
-        </section>
-
-        <div class="chat-container">
-            <div class="chat-header" onclick="toggleChat()"><span>💬 FTAP Chat</span><span>▼</span></div>
-            <div id="chatMessages" class="chat-messages"></div>
-            <div class="chat-input">
-                <input type="text" id="chatInput" placeholder="Type..." onkeypress="if(event.key==='Enter') sendMessage()">
-                <button onclick="sendMessage()">➤</button>
+    <section id="creator" class="section">
+        <h2 class="section-title">О СОЗДАТЕЛЕ</h2>
+        <div class="card creator-card">
+            <h3>Warrior</h3>
+            <p>Никнейм: Warrior</p>
+            <p>Возраст: 13 лет</p>
+            <p>Навыки: Lua, Python</p>
+            <p>Создал: Neon чат для Roblox</p>
+            <p>Создал этот сайт</p>
+            <div style="margin-top: 20px;">
+                <p>Дискорд: @developerk._</p>
+                <p>Roblox профиль: @argundless</p>
             </div>
         </div>
+    </section>
 
-        <footer class="footer">
-            <p>🌀 FTAP CIS Community | Создатель: <strong style="color:#ff00ff;">Warrior</strong> (13 лет)</p>
-            <p style="font-size: 10px; margin-top: 5px;">Data based on community statistics</p>
-        </footer>
+    <div class="chat-container">
+        <div class="chat-header" onclick="toggleChat()"><span>FTAP Chat</span><span>▼</span></div>
+        <div id="chatMessages" class="chat-messages"></div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Type..." onkeypress="if(event.key==='Enter') sendMessage()">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
 
-        <script>
-            let chatOpen = true;
-            function toggleChat() {
-                let msgDiv = document.getElementById('chatMessages');
-                let inputDiv = document.querySelector('.chat-input');
-                if (chatOpen) {
-                    msgDiv.style.display = 'none';
-                    inputDiv.style.display = 'none';
-                    chatOpen = false;
-                    document.querySelector('.chat-header span:last-child').innerHTML = '▲';
-                } else {
-                    msgDiv.style.display = 'block';
-                    inputDiv.style.display = 'flex';
-                    chatOpen = true;
-                    document.querySelector('.chat-header span:last-child').innerHTML = '▼';
-                }
+    <footer class="footer">
+        <p>FTAP CIS Community | Создатель: Warrior (13 лет)</p>
+        <p style="font-size: 10px; margin-top: 5px;">Data based on community statistics</p>
+    </footer>
+
+    <script>
+        let chatOpen = true;
+        function toggleChat() {
+            let msgDiv = document.getElementById('chatMessages');
+            let inputDiv = document.querySelector('.chat-input');
+            if (chatOpen) {
+                msgDiv.style.display = 'none';
+                inputDiv.style.display = 'none';
+                chatOpen = false;
+                document.querySelector('.chat-header span:last-child').innerHTML = '▲';
+            } else {
+                msgDiv.style.display = 'block';
+                inputDiv.style.display = 'flex';
+                chatOpen = true;
+                document.querySelector('.chat-header span:last-child').innerHTML = '▼';
             }
-            function sendMessage() {
-                let input = document.getElementById('chatInput');
-                let text = input.value.trim();
-                if (!text) return;
-                let msgs = JSON.parse(localStorage.getItem('ftap_chat') || '[]');
-                msgs.push({ name: "Player", text: text, time: new Date().toLocaleTimeString() });
-                localStorage.setItem('ftap_chat', JSON.stringify(msgs));
-                input.value = '';
-                displayMessages();
-            }
-            function displayMessages() {
-                let msgs = JSON.parse(localStorage.getItem('ftap_chat') || '[]');
-                let container = document.getElementById('chatMessages');
-                let html = '<div class="chat-message"><span class="chat-name">System:</span> Welcome to FTAP Chat!</div>';
-                for (let i = Math.max(0, msgs.length - 20); i < msgs.length; i++) {
-                    html += `<div class="chat-message"><span class="chat-name">${escapeHtml(msgs[i].name)}:</span> ${escapeHtml(msgs[i].text)}</div>`;
-                }
-                container.innerHTML = html;
-                container.scrollTop = container.scrollHeight;
-            }
-            function escapeHtml(t) { 
-                let d = document.createElement('div'); 
-                d.textContent = t; 
-                return d.innerHTML; 
-            }
-            setInterval(displayMessages, 2000);
+        }
+        function sendMessage() {
+            let input = document.getElementById('chatInput');
+            let text = input.value.trim();
+            if (!text) return;
+            let msgs = JSON.parse(localStorage.getItem('ftap_chat') || '[]');
+            msgs.push({ name: "Player", text: text, time: new Date().toLocaleTimeString() });
+            localStorage.setItem('ftap_chat', JSON.stringify(msgs));
+            input.value = '';
             displayMessages();
-        </script>
+        }
+        function displayMessages() {
+            let msgs = JSON.parse(localStorage.getItem('ftap_chat') || '[]');
+            let container = document.getElementById('chatMessages');
+            let html = '<div class="chat-message">System: Welcome to FTAP Chat!</div>';
+            for (let i = Math.max(0, msgs.length - 20); i < msgs.length; i++) {
+                html += `<div class="chat-message">${escapeHtml(msgs[i].name)}: ${escapeHtml(msgs[i].text)}</div>`;
+            }
+            container.innerHTML = html;
+            container.scrollTop = container.scrollHeight;
+        }
+        function escapeHtml(t) { 
+            let d = document.createElement('div'); 
+            d.textContent = t; 
+            return d.innerHTML; 
+        }
+        setInterval(displayMessages, 2000);
+        displayMessages();
+    </script>
 </body>
 </html>
