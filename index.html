@@ -168,14 +168,39 @@
             }
         }
 
+        /* Плавное переливание заголовков слева направо (как в Discord) */
         h2 {
-            color: #ffffff;
             font-size: 1.4rem;
             font-weight: 700;
             margin: 1.5rem 0 1rem 0;
             letter-spacing: -0.3px;
             border-left: 4px solid #8b5cf6;
             padding-left: 0.8rem;
+            background: linear-gradient(90deg, 
+                #e9d5ff 0%, 
+                #d8b4fe 15%, 
+                #c084fc 30%, 
+                #a855f7 50%, 
+                #c084fc 70%, 
+                #d8b4fe 85%, 
+                #e9d5ff 100%);
+            background-size: 250% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: discordShimmer 6s ease infinite;
+        }
+
+        @keyframes discordShimmer {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .gamepass-grid {
@@ -224,14 +249,43 @@
             margin: 1rem 0;
         }
 
+        /* Анимированные чёрно-фиолетовые карточки (фон переливается) */
         .top-item {
             display: flex;
             align-items: center;
             padding: 0.7rem 1rem;
-            background: rgba(109, 40, 217, 0.2);
+            background: linear-gradient(135deg, #0a0a1a, #1a0a2e, #0a0a1a);
+            background-size: 200% 200%;
             border-radius: 0.8rem;
             flex-wrap: wrap;
             border: 1px solid #6d28d9;
+            animation: darkPurpleFlow 8s ease infinite;
+            transition: all 0.2s;
+        }
+
+        .top-item:hover {
+            border-color: #c084fc;
+            transform: translateY(-2px);
+            box-shadow: 0 0 12px rgba(139, 92, 246, 0.4);
+        }
+
+        @keyframes darkPurpleFlow {
+            0% {
+                background-position: 0% 50%;
+                background: linear-gradient(135deg, #0a0a1a, #1a0a2e, #0a0a1a);
+            }
+            33% {
+                background-position: 100% 50%;
+                background: linear-gradient(135deg, #1a0a2e, #2a0a3e, #0a0a1a);
+            }
+            66% {
+                background-position: 50% 100%;
+                background: linear-gradient(135deg, #0d0d20, #1f0a35, #0d0d20);
+            }
+            100% {
+                background-position: 0% 50%;
+                background: linear-gradient(135deg, #0a0a1a, #1a0a2e, #0a0a1a);
+            }
         }
 
         .top-rank {
@@ -252,7 +306,7 @@
             color: #e2e8f0;
             font-size: 0.8rem;
             line-height: 1.45;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.5);
             padding: 0.3rem 0.7rem;
             border-radius: 1rem;
             margin-top: 0.2rem;
@@ -262,12 +316,16 @@
         }
 
         .clan-info {
-            color: #ffffff;
-            font-size: 0.85rem;
-            background: rgba(109, 40, 217, 0.4);
-            padding: 0.3rem 0.8rem;
-            border-radius: 2rem;
-            font-weight: 500;
+            color: #e2e8f0;
+            font-size: 0.8rem;
+            line-height: 1.45;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.3rem 0.7rem;
+            border-radius: 1rem;
+            margin-top: 0.2rem;
+            width: 100%;
+            word-break: break-word;
+            white-space: normal;
         }
 
         .news-message {
@@ -332,7 +390,7 @@
 <canvas id="spaceCanvas"></canvas>
 
 <div class="discord-banner" id="discordBanner">
-    <a href="#" id="discordLink">Official Discord Server FTAP</a>
+    <a href="#" id="discordLink">Official Discord Server FTAP (Только тут вы сможете увидеть свежие новости)</a>
 </div>
 
 <div class="container">
@@ -342,11 +400,11 @@
     </div>
 
     <h1 id="siteTitle">FTAP Community</h1>
-    <div class="subhead" id="siteSubhead">All-Time Tops · Gamepasses · PvP Clans · News</div>
+    <div class="subhead" id="siteSubhead">All-Time Tops · Gamepasses · PvP Clans · HVH · AIM · News</div>
 
     <div class="tabs">
         <button class="tab-btn active" data-tab="home" id="tabHome">Главная</button>
-        <button class="tab-btn" data-tab="news" id="tabNews">News / Новости</button>
+        <button class="tab-btn" data-tab="news" id="tabNews">Новости FTAP</button>
     </div>
 
     <div id="home" class="tab-content active">
@@ -364,12 +422,21 @@
 
         <h2 id="topClansTitle">TOP CLANS PVP</h2>
         <div class="top-list" id="topClansList"></div>
+
+        <h2 id="clansHvhTitle">TOP CLANS HVH</h2>
+        <div class="top-list" id="clansHvhList"></div>
+
+        <h2 id="hvhTitle">TOP HVH</h2>
+        <div class="top-list" id="hvhList"></div>
+
+        <h2 id="aimTitle">TOP AIM</h2>
+        <div class="top-list" id="aimList"></div>
     </div>
 
     <div id="news" class="tab-content">
         <div class="news-message" id="newsMessage">
             <p id="newsText">Пока я не делал посты в сайте так как кто я? Правильно ленивая жопа.</p>
-            <div class="lazy-sign" id="lazySignature">Усердно какаю</div>
+            <div class="lazy-sign" id="lazySignature">— Усердно какаю</div>
         </div>
     </div>
 
@@ -382,9 +449,10 @@
         const ctx = canvas.getContext('2d');
         let width = window.innerWidth;
         let height = window.innerHeight;
-        let particles = [];
-        const particleCount = 350;
-        let stars = [];
+        let movingParticles = [];
+        let twinklingStars = [];
+        const PARTICLE_COUNT = 220;
+        const STAR_COUNT = 800;
 
         function resizeCanvas() {
             width = window.innerWidth;
@@ -393,76 +461,99 @@
             canvas.height = height;
         }
 
-        function initSpace() {
-            particles = [];
-            stars = [];
-            for (let i = 0; i < 1000; i++) {
-                stars.push({
+        function initUniverse() {
+            movingParticles = [];
+            twinklingStars = [];
+            
+            for (let i = 0; i < STAR_COUNT; i++) {
+                twinklingStars.push({
                     x: Math.random() * width,
                     y: Math.random() * height,
-                    radius: Math.random() * 2 + 0.5,
-                    alpha: Math.random() * 0.6 + 0.2,
-                    twinkleSpeed: 0.005 + Math.random() * 0.02,
-                    twinkleDir: Math.random() > 0.5 ? 1 : -1
+                    radius: Math.random() * 1.8 + 0.3,
+                    baseAlpha: Math.random() * 0.5 + 0.15,
+                    alpha: Math.random() * 0.5 + 0.15,
+                    speed: 0.003 + Math.random() * 0.015,
+                    direction: Math.random() > 0.5 ? 1 : -1
                 });
             }
-            for (let i = 0; i < particleCount; i++) {
-                particles.push({
+            
+            for (let i = 0; i < PARTICLE_COUNT; i++) {
+                movingParticles.push({
                     x: Math.random() * width,
                     y: Math.random() * height,
-                    radius: Math.random() * 3 + 1,
-                    speedX: (Math.random() - 0.5) * 0.2,
-                    speedY: (Math.random() - 0.5) * 0.15,
-                    alpha: Math.random() * 0.4 + 0.1,
-                    color: `hsl(${260 + Math.random() * 80}, 80%, 55%)`
+                    radius: Math.random() * 2.5 + 0.6,
+                    vx: (Math.random() - 0.5) * 0.18,
+                    vy: (Math.random() - 0.5) * 0.12,
+                    hue: 240 + Math.random() * 80,
+                    sat: 65 + Math.random() * 25,
+                    light: 55 + Math.random() * 25,
+                    alpha: Math.random() * 0.5 + 0.2
                 });
             }
         }
 
-        function drawSpace() {
+        function drawCosmos() {
             ctx.clearRect(0, 0, width, height);
-            const grad = ctx.createLinearGradient(0, 0, width, height);
-            grad.addColorStop(0, '#05030a');
-            grad.addColorStop(0.5, '#0c0820');
-            grad.addColorStop(1, '#140c2a');
-            ctx.fillStyle = grad;
+            
+            const radialGrad = ctx.createRadialGradient(width * 0.3, height * 0.2, 50, width * 0.5, height * 0.5, width);
+            radialGrad.addColorStop(0, '#0f0a2a');
+            radialGrad.addColorStop(0.4, '#0a0520');
+            radialGrad.addColorStop(1, '#030010');
+            ctx.fillStyle = radialGrad;
             ctx.fillRect(0, 0, width, height);
             
-            for (let star of stars) {
-                star.alpha += star.twinkleSpeed * star.twinkleDir;
-                if (star.alpha > 0.7) star.twinkleDir = -1;
-                if (star.alpha < 0.15) star.twinkleDir = 1;
+            for (let star of twinklingStars) {
+                star.alpha += star.speed * star.direction;
+                if (star.alpha > star.baseAlpha + 0.25) star.direction = -1;
+                if (star.alpha < star.baseAlpha - 0.12) star.direction = 1;
                 ctx.beginPath();
                 ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 240, 200, ${star.alpha})`;
+                ctx.fillStyle = `rgba(210, 190, 255, ${star.alpha * 0.7})`;
                 ctx.fill();
             }
             
-            for (let p of particles) {
+            for (let p of movingParticles) {
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = p.color;
-                ctx.shadowBlur = 5;
-                ctx.shadowColor = '#7c3aed';
+                ctx.fillStyle = `hsla(${p.hue}, ${p.sat}%, ${p.light}%, ${p.alpha * 0.6})`;
                 ctx.fill();
-                p.x += p.speedX;
-                p.y += p.speedY;
-                if (p.x > width) p.x = 0;
-                if (p.x < 0) p.x = width;
-                if (p.y > height) p.y = 0;
-                if (p.y < 0) p.y = height;
+                
+                if (p.radius > 1.2) {
+                    ctx.beginPath();
+                    ctx.arc(p.x - 0.8, p.y - 0.5, p.radius * 0.4, 0, Math.PI * 2);
+                    ctx.fillStyle = `hsla(${p.hue}, ${p.sat}%, 70%, ${p.alpha * 0.4})`;
+                    ctx.fill();
+                }
+                
+                p.x += p.vx;
+                p.y += p.vy;
+                
+                if (p.x > width + 30) p.x = -30;
+                if (p.x < -30) p.x = width + 30;
+                if (p.y > height + 30) p.y = -30;
+                if (p.y < -30) p.y = height + 30;
             }
-            ctx.shadowBlur = 0;
-            requestAnimationFrame(drawSpace);
+            
+            for (let i = 0; i < 60; i++) {
+                const fx = (i * 131) % width;
+                const fy = (i * 253) % height;
+                ctx.beginPath();
+                ctx.rect(fx, fy, 0.6, 0.6);
+                ctx.fillStyle = `rgba(170, 120, 240, ${Math.random() * 0.4})`;
+                ctx.fill();
+            }
+            
+            requestAnimationFrame(drawCosmos);
         }
 
         window.addEventListener('resize', () => {
             resizeCanvas();
-            initSpace();
+            initUniverse();
         });
+        
         resizeCanvas();
-        initSpace();
-        drawSpace();
+        initUniverse();
+        drawCosmos();
 
         let currentLang = 'ru';
 
@@ -482,142 +573,225 @@
         const topCoders = [
             { name: "m1kp", statusRu: "m1kp (ешка) создал всеми известный скрипт Worst — топ-1 скрипт по мнению опытных кодеров.", statusEn: "m1kp created Worst script — top-rated by pro coders." },
             { name: "Blizt", statusRu: "Blizt — создатель скрипта Blizt. Есть премиум и бесплатная версия. У бесплатной сокращён функционал, но для новичков подходит.", statusEn: "Blizt script author. Premium & free version — good for beginners." },
-            { name: "Tapalka", statusRu: "Опытный разработчик на Python, LuaU, Go, Java и C#. ", statusEn: "Experienced developer: Python, LuaU, Go, Java, C#." },
+            { name: "Tapalka", statusRu: "Опытный разработчик на Python, LuaU, Go, Java и C#.", statusEn: "Experienced developer: Python, LuaU, Go, Java, C#." },
             { name: "marshel", statusRu: "Маршел — создатель качественного скрипта Resonance.", statusEn: "Marshel — creator of Resonance script. " },
             { name: "Sladostrastnik", statusRu: "Грек, очень опытный скриптер (LuaU, Python). Лидер SEB - EGA.", statusEn: "Greek scripter, expert in LuaU/Python. Leader of SEB - EGA." }
         ];
 
         const pvpClans = [
-            { name: "SHX", infoRu: "1 место. Клан имеет сильнейших на данный момент игроков LortFaeky, Krot.", infoEn: "1st place. Absolute PvP leaders: LortFaeky, Krot." },
-            { name: "KoJ", infoRu: "2 место. Клан имеет фтаперов снг: Desper, Centurion, Derealization.", infoEn: "2nd place. CIS elite: Desper, Centurion, Derealization." },
-            { name: "DIN", infoRu: "3 место. Именно этот клан может доставить вам неприятности ведь у них есть сильные игроки.", infoEn: "3rd place. This clan has strong players who can cause trouble." }
+            { name: "SHX", infoRu: "1 место. Клан имеет сильнейших на данный момент игроков LortFaeky, Krot, kenawereness,reflex.", infoEn: "1st place. The clan has the strongest players right now: LortFaeky, Krot, kenawereness, reflex." },
+            { name: "KoJ", infoRu: "2 место. Клан имеет фтаперов снг: Desper, Centurion, Derealization.", infoEn: "2nd place. The clan has CIS ftapers: Desper, Centurion, Derealization." },
+            { name: "DIN", infoRu: "3 место. Именно этот клан может доставить вам неприятности ведь у них есть сильные игроки по пвп и хвх.", infoEn: "3rd place. This clan can cause you trouble because they have strong players." }
+        ];
+
+        const clansHvhList = [
+            { name: "PDD" },
+            { name: "URAL" },
+            { name: "AV" },
+            { name: "EGA" },
+            { name: "SEB" }
+        ];
+
+        const hvhPlayers = [
+            { name: "Luke", statusRu: "Сильный хвх игрок с меркурием, резонансом.", statusEn: "Strong xvx player with mercury, resonance." },
+            { name: "Крутой", statusRu: "Топ хвх игрок с своим самописным скриптом.", statusEn: "A top HVH player with his own script." },
+            { name: "Tapalka", statusRu: "Такой же топ по хвх с самописными скриптами menaton, grape.", statusEn: "The same top on HVH with self-written scripts menaton, grape." },
+            { name: "Krasher", statusRu: "Крашер — создатель RIP HUB, знает Lua, топовый хвх игрок.", statusEn: "Krasher — creator of RIP HUB, knows Lua, top HVH player." },
+            { name: "Dominus", statusRu: "Доминус — очень сильный игрок с резонансом, мастер хвх.", statusEn: "Dominus is a very strong player with resonance, HVH master." }
+        ];
+
+        const aimPlayers = [
+            { name: "Lort Faeky", statusRu: "Самый лучший аим в роблоксе в целом, нечеловеческая реакция.", statusEn: "Top aim, inhuman reaction." },
+            { name: "Krot", statusRu: "Друг лорта фаеки также обладает невероятными способностями вместе с лорт фаеки.", statusEn: "Young talent, godlike clicks." },
+            { name: "Beastmode", statusRu: "Очень сильный игрок состоит в клане SHX помогает лорту и кроту.", statusEn: "Aggressive style, pure headshot." }
         ];
 
         function renderGamepasses() {
             const container = document.getElementById('gamepassGrid');
-            if (!container) return;
-            container.innerHTML = gamepassesList.map(gp => `
-                <div class="gamepass-item">
-                    <span class="gamepass-name">${escapeHtml(gp.name)}</span>
-                    <span class="gamepass-price">${escapeHtml(gp.price)}</span>
-                </div>
-            `).join('');
+            if (container) {
+                container.innerHTML = gamepassesList.map(gp => `
+                    <div class="gamepass-item">
+                        <span class="gamepass-name">${escapeHtml(gp.name)}</span>
+                        <span class="gamepass-price">${escapeHtml(gp.price)}</span>
+                    </div>
+                `).join('');
+            }
         }
 
         function renderAllTimeTop() {
             const container = document.getElementById('allTimeTopList');
-            if (!container) return;
-            container.innerHTML = allTimeTop.map((p, i) => `<div class="top-item"><div class="top-rank">${i+1}</div><div class="top-name">${escapeHtml(p)}</div></div>`).join('');
+            if (container) {
+                container.innerHTML = allTimeTop.map((p, i) => `<div class="top-item"><div class="top-rank">${i+1}</div><div class="top-name">${escapeHtml(p)}</div></div>`).join('');
+            }
         }
+        
         function renderTopCis() {
             const container = document.getElementById('topCisList');
-            if (!container) return;
-            container.innerHTML = topCisPlayers.map((p, i) => `<div class="top-item"><div class="top-rank">${i+1}</div><div class="top-name">${escapeHtml(p)}</div></div>`).join('');
+            if (container) {
+                container.innerHTML = topCisPlayers.map((p, i) => `<div class="top-item"><div class="top-rank">${i+1}</div><div class="top-name">${escapeHtml(p)}</div></div>`).join('');
+            }
         }
+        
         function renderTopCoders() {
             const container = document.getElementById('topCodersList');
-            if (!container) return;
-            container.innerHTML = topCoders.map((c, i) => `
-                <div class="top-item">
-                    <div class="top-rank">${i+1}</div>
-                    <div class="top-name">${escapeHtml(c.name)}</div>
-                    <div class="top-status">${currentLang === 'ru' ? c.statusRu : c.statusEn}</div>
-                </div>
-            `).join('');
+            if (container) {
+                container.innerHTML = topCoders.map((c, i) => `
+                    <div class="top-item">
+                        <div class="top-rank">${i+1}</div>
+                        <div class="top-name">${escapeHtml(c.name)}</div>
+                        <div class="top-status">${currentLang === 'ru' ? c.statusRu : c.statusEn}</div>
+                    </div>
+                `).join('');
+            }
         }
 
         function renderTopClans() {
             const container = document.getElementById('topClansList');
-            if (!container) return;
-            container.innerHTML = pvpClans.map((clan, idx) => `
-                <div class="top-item">
-                    <div class="top-rank">${idx+1}</div>
-                    <div class="top-name">${escapeHtml(clan.name)}</div>
-                    <div class="clan-info">${currentLang === 'ru' ? clan.infoRu : clan.infoEn}</div>
-                </div>
-            `).join('');
+            if (container) {
+                container.innerHTML = pvpClans.map((clan, idx) => `
+                    <div class="top-item">
+                        <div class="top-rank">${idx+1}</div>
+                        <div class="top-name">${escapeHtml(clan.name)}</div>
+                        <div class="clan-info">${currentLang === 'ru' ? clan.infoRu : clan.infoEn}</div>
+                    </div>
+                `).join('');
+            }
         }
 
-        function updateNewsLanguage() {
+        function renderClansHvh() {
+            const container = document.getElementById('clansHvhList');
+            if (container) {
+                container.innerHTML = clansHvhList.map((clan, idx) => `
+                    <div class="top-item">
+                        <div class="top-rank">${idx+1}</div>
+                        <div class="top-name">${escapeHtml(clan.name)}</div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function renderHvh() {
+            const container = document.getElementById('hvhList');
+            if (container) {
+                container.innerHTML = hvhPlayers.map((p, i) => `
+                    <div class="top-item">
+                        <div class="top-rank">${i+1}</div>
+                        <div class="top-name">${escapeHtml(p.name)}</div>
+                        <div class="top-status">${currentLang === 'ru' ? p.statusRu : p.statusEn}</div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function renderAim() {
+            const container = document.getElementById('aimList');
+            if (container) {
+                container.innerHTML = aimPlayers.map((p, i) => `
+                    <div class="top-item">
+                        <div class="top-rank">${i+1}</div>
+                        <div class="top-name">${escapeHtml(p.name)}</div>
+                        <div class="top-status">${currentLang === 'ru' ? p.statusRu : p.statusEn}</div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function updateNewsMessage() {
             const newsTextEl = document.getElementById('newsText');
             const lazySignEl = document.getElementById('lazySignature');
-            if (!newsTextEl) return;
-            
-            if (currentLang === 'ru') {
-                newsTextEl.innerHTML = 'Пока я не делал посты в сайте так как кто я? Правильно ленивая жопа.';
-                lazySignEl.textContent = 'Очень усердно какаю.';
-            } else {
-                newsTextEl.innerHTML = ' No news yet because the author is a little bit lazy and doesn\'t want to do anything.';
-                lazySignEl.textContent = '— Lazy author';
+            if (newsTextEl && lazySignEl) {
+                if (currentLang === 'ru') {
+                    newsTextEl.innerHTML = 'Друн друк.';
+                    lazySignEl.innerHTML = 'БЭЭЭ';
+                } else {
+                    newsTextEl.innerHTML = 'I haven\'t made any posts on the site yet because who am I? That\'s right, a lazy ass.';
+                    lazySignEl.innerHTML = '— Pooping diligently';
+                }
             }
         }
 
         const translations = {
             ru: {
                 siteTitle: 'FTAP CIS Community',
-                siteSubhead: 'All-Time Tops · Gamepasses · PvP Clans · News',
+                siteSubhead: 'All-Time Tops · Gamepasses · PvP Clans · HVH · AIM · News',
                 gamepassesTitle: 'GAMEPASSES',
                 allTimeTopTitle: 'ALL-TIME TOP',
                 topCisTitle: 'TOP CIS RIGHT NOW',
                 topCodersTitle: 'TOP CODERS',
                 topClansTitle: 'TOP CLANS PVP',
+                clansHvhTitle: 'TOP CLANS HVH',
+                hvhTitle: 'TOP HVH',
+                aimTitle: 'TOP AIM',
                 footerText: 'FTAP CIS Community — PvP & News Hub',
                 tabHome: 'Главная',
-                tabNews: 'Новости'
+                tabNews: 'Новости FTAP'
             },
             en: {
                 siteTitle: 'FTAP CIS Community',
-                siteSubhead: 'All-Time Tops · Gamepasses · PvP Clans · News',
+                siteSubhead: 'All-Time Tops · Gamepasses · PvP Clans · HVH · AIM · News',
                 gamepassesTitle: 'GAMEPASSES',
                 allTimeTopTitle: 'ALL-TIME TOP',
                 topCisTitle: 'TOP CIS RIGHT NOW',
                 topCodersTitle: 'TOP CODERS',
                 topClansTitle: 'TOP CLANS PVP',
+                clansHvhTitle: 'TOP CLANS HVH',
+                hvhTitle: 'TOP HVH',
+                aimTitle: 'TOP AIM',
                 footerText: 'FTAP CIS Community — PvP & News Hub',
                 tabHome: 'Main',
-                tabNews: 'News'
+                tabNews: 'FTAP News'
             }
         };
 
         function updateUILanguage() {
             const t = translations[currentLang];
-            document.getElementById('siteTitle').textContent = t.siteTitle;
-            document.getElementById('siteSubhead').textContent = t.siteSubhead;
+            document.getElementById('siteTitle').innerText = t.siteTitle;
+            document.getElementById('siteSubhead').innerText = t.siteSubhead;
             document.getElementById('gamepassesTitle').innerHTML = t.gamepassesTitle;
             document.getElementById('allTimeTopTitle').innerHTML = t.allTimeTopTitle;
             document.getElementById('topCisTitle').innerHTML = t.topCisTitle;
             document.getElementById('topCodersTitle').innerHTML = t.topCodersTitle;
             document.getElementById('topClansTitle').innerHTML = t.topClansTitle;
-            document.getElementById('footerText').textContent = t.footerText;
+            document.getElementById('footerText').innerText = t.footerText;
             
-            const tabHomeBtn = document.getElementById('tabHome');
-            const tabNewsBtn = document.getElementById('tabNews');
-            if (tabHomeBtn) tabHomeBtn.textContent = t.tabHome;
-            if (tabNewsBtn) tabNewsBtn.textContent = t.tabNews;
-
+            const clansHvhTitle = document.getElementById('clansHvhTitle');
+            if (clansHvhTitle) clansHvhTitle.innerHTML = t.clansHvhTitle;
+            const hvhTitle = document.getElementById('hvhTitle');
+            if (hvhTitle) hvhTitle.innerHTML = t.hvhTitle;
+            const aimTitle = document.getElementById('aimTitle');
+            if (aimTitle) aimTitle.innerHTML = t.aimTitle;
+            
+            const tabHome = document.getElementById('tabHome');
+            const tabNews = document.getElementById('tabNews');
+            if (tabHome) tabHome.innerText = t.tabHome;
+            if (tabNews) tabNews.innerText = t.tabNews;
+            
             renderTopCoders();
             renderTopClans();
-            updateNewsLanguage();
+            renderClansHvh();
+            renderHvh();
+            renderAim();
+            updateNewsMessage();
         }
 
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.remove('active');
             });
-            const activeContent = document.getElementById(tabId);
-            if (activeContent) activeContent.classList.add('active');
+            const activeTabContent = document.getElementById(tabId);
+            if (activeTabContent) activeTabContent.classList.add('active');
             
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            const activeBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
-            if (activeBtn) activeBtn.classList.add('active');
+            const activeButton = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+            if (activeButton) activeButton.classList.add('active');
         }
 
         document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const tabId = btn.dataset.tab;
-                switchTab(tabId);
+            btn.addEventListener('click', (e) => {
+                const tabId = btn.getAttribute('data-tab');
+                if (tabId) switchTab(tabId);
             });
         });
 
@@ -625,18 +799,24 @@
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                currentLang = btn.dataset.lang;
+                currentLang = btn.getAttribute('data-lang');
                 updateUILanguage();
             });
         });
 
         function escapeHtml(str) {
             if (!str) return '';
-            return str.replace(/[&<>]/g, (m) => m === '&' ? '&amp;' : (m === '<' ? '&lt;' : '&gt;'));
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
         }
 
         const banner = document.getElementById('discordBanner');
-        setTimeout(() => banner.classList.add('show'), 500);
+        setTimeout(() => banner.classList.add('show'), 600);
+        
         const discordLink = document.getElementById('discordLink');
         if (discordLink) {
             discordLink.addEventListener('click', (e) => {
@@ -650,6 +830,9 @@
         renderTopCis();
         renderTopCoders();
         renderTopClans();
+        renderClansHvh();
+        renderHvh();
+        renderAim();
         updateUILanguage();
     })();
 </script>
