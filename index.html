@@ -34,30 +34,49 @@
 
         .discord-banner {
             position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%) translateY(-100px);
-            background: #6d28d9;
-            border-radius: 40px;
-            padding: 0.7rem 2rem;
-            box-shadow: 0 4px 25px rgba(109, 40, 217, 0.5);
+            top: 0;
+            left: 0;
+            right: 0;
+            transform: translateY(0);
+            background: linear-gradient(135deg, #1e1a3a, #2a1a4a, #1a0a3a);
+            background-size: 200% 200%;
+            border-radius: 0 0 20px 20px;
+            padding: 0.8rem 2rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 0 1px #6d28d9 inset, 0 0 15px rgba(109, 40, 217, 0.5);
             z-index: 1001;
-            font-size: 0.9rem;
-            font-weight: 700;
+            font-size: 1rem;
+            font-weight: 800;
             text-align: center;
-            white-space: nowrap;
-            transition: transform 0.4s ease;
             cursor: pointer;
-            border: 1px solid #a855f7;
+            backdrop-filter: blur(5px);
+            animation: darkPurplePulse 3s ease infinite, borderGlow 2s ease-in-out infinite;
+            transition: all 0.3s ease;
         }
 
-        .discord-banner.show {
-            transform: translateX(-50%) translateY(0);
+        .discord-banner:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8), 0 0 0 2px #c084fc inset, 0 0 25px #a855f7;
+            background: linear-gradient(135deg, #2a1a4a, #3a1a5a, #2a1a4a);
+            background-size: 200% 200%;
+        }
+
+        @keyframes darkPurplePulse {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes borderGlow {
+            0% { box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 0 1px #6d28d9 inset, 0 0 15px rgba(109, 40, 217, 0.4); }
+            50% { box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7), 0 0 0 1px #c084fc inset, 0 0 25px rgba(192, 132, 252, 0.7); }
+            100% { box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 0 1px #6d28d9 inset, 0 0 15px rgba(109, 40, 217, 0.4); }
         }
 
         .discord-banner a {
             color: white;
             text-decoration: none;
+            letter-spacing: 1px;
+            text-shadow: 0 0 5px #a855f7;
         }
 
         .container {
@@ -67,7 +86,7 @@
             backdrop-filter: blur(2px);
             border-radius: 1.5rem;
             padding: 2rem;
-            margin-top: 90px;
+            margin-top: 100px;
             border: 1px solid rgba(139, 92, 246, 0.5);
             position: relative;
             z-index: 10;
@@ -108,13 +127,13 @@
             background-clip: text;
             color: transparent;
             margin-bottom: 0.5rem;
+            text-align: center;
             text-shadow: 0 0 20px rgba(109, 40, 217, 0.3);
         }
 
         .subhead {
             color: #d1d5db;
-            border-left: 3px solid #8b5cf6;
-            padding-left: 1rem;
+            text-align: center;
             margin: 1rem 0 2rem 0;
             font-size: 0.95rem;
             font-weight: 500;
@@ -122,6 +141,7 @@
 
         .tabs {
             display: flex;
+            justify-content: center;
             gap: 0.5rem;
             margin-bottom: 2rem;
             border-bottom: 1px solid #6d28d9;
@@ -168,14 +188,12 @@
             }
         }
 
-        /* Плавное переливание заголовков слева направо (как в Discord) */
         h2 {
             font-size: 1.4rem;
             font-weight: 700;
             margin: 1.5rem 0 1rem 0;
             letter-spacing: -0.3px;
-            border-left: 4px solid #8b5cf6;
-            padding-left: 0.8rem;
+            text-align: center;
             background: linear-gradient(90deg, 
                 #e9d5ff 0%, 
                 #d8b4fe 15%, 
@@ -192,15 +210,9 @@
         }
 
         @keyframes discordShimmer {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .gamepass-grid {
@@ -249,7 +261,6 @@
             margin: 1rem 0;
         }
 
-        /* Анимированные чёрно-фиолетовые карточки (фон переливается) */
         .top-item {
             display: flex;
             align-items: center;
@@ -270,22 +281,10 @@
         }
 
         @keyframes darkPurpleFlow {
-            0% {
-                background-position: 0% 50%;
-                background: linear-gradient(135deg, #0a0a1a, #1a0a2e, #0a0a1a);
-            }
-            33% {
-                background-position: 100% 50%;
-                background: linear-gradient(135deg, #1a0a2e, #2a0a3e, #0a0a1a);
-            }
-            66% {
-                background-position: 50% 100%;
-                background: linear-gradient(135deg, #0d0d20, #1f0a35, #0d0d20);
-            }
-            100% {
-                background-position: 0% 50%;
-                background: linear-gradient(135deg, #0a0a1a, #1a0a2e, #0a0a1a);
-            }
+            0% { background-position: 0% 50%; background: linear-gradient(135deg, #0a0a1a, #1a0a2e, #0a0a1a); }
+            33% { background-position: 100% 50%; background: linear-gradient(135deg, #1a0a2e, #2a0a3e, #0a0a1a); }
+            66% { background-position: 50% 100%; background: linear-gradient(135deg, #0d0d20, #1f0a35, #0d0d20); }
+            100% { background-position: 0% 50%; background: linear-gradient(135deg, #0a0a1a, #1a0a2e, #0a0a1a); }
         }
 
         .top-rank {
@@ -350,27 +349,20 @@
         }
 
         footer {
-            text-align: center;
-            margin-top: 2rem;
-            font-size: 0.75rem;
-            color: #a78bfa;
-            border-top: 1px solid #6d28d9;
-            padding-top: 1.5rem;
+            display: none;
         }
 
         @media (max-width: 640px) {
             .container {
                 padding: 1rem;
-                margin-top: 80px;
+                margin-top: 120px;
+            }
+            .discord-banner {
+                padding: 0.5rem 1rem;
+                font-size: 0.75rem;
             }
             .top-rank {
                 width: 40px;
-            }
-            .discord-banner {
-                white-space: normal;
-                font-size: 0.7rem;
-                padding: 0.4rem 1rem;
-                width: 90%;
             }
             .top-status {
                 margin-top: 6px;
@@ -390,7 +382,7 @@
 <canvas id="spaceCanvas"></canvas>
 
 <div class="discord-banner" id="discordBanner">
-    <a href="#" id="discordLink">Official Discord Server FTAP (Только тут вы сможете увидеть свежие новости)</a>
+    <a href="#" id="discordLink">Official Discord Server FTAP</a>
 </div>
 
 <div class="container">
@@ -429,18 +421,18 @@
         <h2 id="hvhTitle">TOP HVH</h2>
         <div class="top-list" id="hvhList"></div>
 
-        <h2 id="aimTitle">TOP AIM</h2>
+        <h2 id="aimTitle">TOP AIM PLAYERS</h2>
         <div class="top-list" id="aimList"></div>
     </div>
 
     <div id="news" class="tab-content">
         <div class="news-message" id="newsMessage">
-            <p id="newsText">Пока я не делал посты в сайте так как кто я? Правильно ленивая жопа.</p>
-            <div class="lazy-sign" id="lazySignature">— Усердно какаю</div>
+            <p id="newsText">Друн друк.</p>
+            <div class="lazy-sign" id="lazySignature">— БЭЭЭ</div>
         </div>
     </div>
 
-    <footer id="footerText">FTAP CIS Community — PvP & News Hub</footer>
+    <footer id="footerText"></footer>
 </div>
 
 <script>
@@ -534,15 +526,6 @@
                 if (p.y < -30) p.y = height + 30;
             }
             
-            for (let i = 0; i < 60; i++) {
-                const fx = (i * 131) % width;
-                const fy = (i * 253) % height;
-                ctx.beginPath();
-                ctx.rect(fx, fy, 0.6, 0.6);
-                ctx.fillStyle = `rgba(170, 120, 240, ${Math.random() * 0.4})`;
-                ctx.fill();
-            }
-            
             requestAnimationFrame(drawCosmos);
         }
 
@@ -568,20 +551,21 @@
         ];
 
         const allTimeTop = ["Markakela", "Keenawareeness", "Lal", "Reflex", "Rellizeez", "Welosew", "Flintex", "Meow", "Lensor", "Drezz", "Derealization", "Centurion"];
-        const topCisPlayers = ["LortFaeky", "Krot", "Reflex", "Rellizeez", "Welosew"];
+        
+        const topCisPlayers = ["Reflex", "Keenawareeness", "Rellizeez", "Welosew", "Lorex"];
         
         const topCoders = [
-            { name: "m1kp", statusRu: "m1kp (ешка) создал всеми известный скрипт Worst — топ-1 скрипт по мнению опытных кодеров.", statusEn: "m1kp created Worst script — top-rated by pro coders." },
-            { name: "Blizt", statusRu: "Blizt — создатель скрипта Blizt. Есть премиум и бесплатная версия. У бесплатной сокращён функционал, но для новичков подходит.", statusEn: "Blizt script author. Premium & free version — good for beginners." },
-            { name: "Tapalka", statusRu: "Опытный разработчик на Python, LuaU, Go, Java и C#.", statusEn: "Experienced developer: Python, LuaU, Go, Java, C#." },
-            { name: "marshel", statusRu: "Маршел — создатель качественного скрипта Resonance.", statusEn: "Marshel — creator of Resonance script. " },
-            { name: "Sladostrastnik", statusRu: "Грек, очень опытный скриптер (LuaU, Python). Лидер SEB - EGA.", statusEn: "Greek scripter, expert in LuaU/Python. Leader of SEB - EGA." }
+            { name: "m1kp", statusRu: "m1kp создал всеми известный скрипт Worst — топ-1 скрипт по мнению опытных кодеров.", statusEn: "m1kp created the famous Worst script — top-1 script according to experienced coders." },
+            { name: "Blizt", statusRu: "Blizt — создатель скрипта Blizt. Есть премиум и бесплатная версия.", statusEn: "Blizt — creator of Blizt script. Premium and free versions available." },
+            { name: "Tapalka", statusRu: "Опытный разработчик на Python, LuaU, Go, Java и C#.", statusEn: "Experienced developer in Python, LuaU, Go, Java and C#." },
+            { name: "marshel", statusRu: "Маршел — создатель качественного скрипта Resonance.", statusEn: "Marshel — creator of the high-quality Resonance script." },
+            { name: "Sladostrastnik", statusRu: "Грек, очень опытный скриптер (LuaU, Python). Лидер SEB - EGA.", statusEn: "Greek, very experienced scripter (LuaU, Python). Leader of SEB - EGA." }
         ];
 
         const pvpClans = [
-            { name: "SHX", infoRu: "1 место. Клан имеет сильнейших на данный момент игроков LortFaeky, Krot, kenawereness,reflex.", infoEn: "1st place. The clan has the strongest players right now: LortFaeky, Krot, kenawereness, reflex." },
-            { name: "KoJ", infoRu: "2 место. Клан имеет фтаперов снг: Desper, Centurion, Derealization.", infoEn: "2nd place. The clan has CIS ftapers: Desper, Centurion, Derealization." },
-            { name: "DIN", infoRu: "3 место. Именно этот клан может доставить вам неприятности ведь у них есть сильные игроки по пвп и хвх.", infoEn: "3rd place. This clan can cause you trouble because they have strong players." }
+            { name: "SHX", infoRu: "1 место. Клан имеет сильнейших на данный момент игроков: LortFaeky, Krot, Keenawareness, Reflex.", infoEn: "1st place. The clan has the strongest players right now: LortFaeky, Krot, Keenawareness, Reflex." },
+            { name: "KoJ", infoRu: "2 место. Клан имеет топовых FTAP игроков СНГ: Desper, Centurion, Derealization.", infoEn: "2nd place. The clan has top CIS FTAP players: Desper, Centurion, Derealization." },
+            { name: "DIN", infoRu: "3 место. Этот клан может доставить вам неприятности — у них есть сильные игроки по PvP и HVH.", infoEn: "3rd place. This clan can cause you trouble — they have strong PvP and HVH players." }
         ];
 
         const clansHvhList = [
@@ -593,17 +577,17 @@
         ];
 
         const hvhPlayers = [
-            { name: "Luke", statusRu: "Сильный хвх игрок с меркурием, резонансом.", statusEn: "Strong xvx player with mercury, resonance." },
-            { name: "Крутой", statusRu: "Топ хвх игрок с своим самописным скриптом.", statusEn: "A top HVH player with his own script." },
-            { name: "Tapalka", statusRu: "Такой же топ по хвх с самописными скриптами menaton, grape.", statusEn: "The same top on HVH with self-written scripts menaton, grape." },
-            { name: "Krasher", statusRu: "Крашер — создатель RIP HUB, знает Lua, топовый хвх игрок.", statusEn: "Krasher — creator of RIP HUB, knows Lua, top HVH player." },
-            { name: "Dominus", statusRu: "Доминус — очень сильный игрок с резонансом, мастер хвх.", statusEn: "Dominus is a very strong player with resonance, HVH master." }
+            { name: "Luke", statusRu: "Сильный HVH игрок с Mercury, Resonance.", statusEn: "Strong HVH player with Mercury, Resonance." },
+            { name: "Onlylose", statusRu: "Один из лидеров PDD, создатель скрипта Onlylose.", statusEn: "One of the leaders of PDD, creator of Onlylose script." },
+            { name: "Tapalka", statusRu: "Топовый HVH игрок с самописными скриптами Menaton, Grape.", statusEn: "Top HVH player with self-written scripts Menaton, Grape." },
+            { name: "Krasher", statusRu: "Участник URAL, создал скрипт RIP, входит в топ-3 HVH игроков URAL.", statusEn: "Member of URAL, creator of RIP script, top-3 HVH player in URAL." },
+            { name: "Dominus", statusRu: "Участник клана URAL, очень силён в HVH, входит в топ-3 лучших HVH игроков URAL.", statusEn: "Member of URAL clan, very strong in HVH, top-3 HVH players in URAL." }
         ];
 
         const aimPlayers = [
-            { name: "Lort Faeky", statusRu: "Самый лучший аим в роблоксе в целом, нечеловеческая реакция.", statusEn: "Top aim, inhuman reaction." },
-            { name: "Krot", statusRu: "Друг лорта фаеки также обладает невероятными способностями вместе с лорт фаеки.", statusEn: "Young talent, godlike clicks." },
-            { name: "Beastmode", statusRu: "Очень сильный игрок состоит в клане SHX помогает лорту и кроту.", statusEn: "Aggressive style, pure headshot." }
+            { name: "Lort Faeky", statusRu: "Лучший аим в Roblox в целом, нечеловеческая реакция.", statusEn: "The best aim in Roblox overall, inhuman reaction." },
+            { name: "Krot", statusRu: "Друг Lort Faeky, также обладает невероятными способностями.", statusEn: "Lort Faeky's friend, also has incredible abilities." },
+            { name: "Beastmode", statusRu: "Очень сильный игрок, состоит в клане SHX, помогает Lort и Krot.", statusEn: "Very strong player, member of SHX clan, helps Lort and Krot." }
         ];
 
         function renderGamepasses() {
@@ -702,10 +686,10 @@
             if (newsTextEl && lazySignEl) {
                 if (currentLang === 'ru') {
                     newsTextEl.innerHTML = 'Друн друк.';
-                    lazySignEl.innerHTML = 'БЭЭЭ';
+                    lazySignEl.innerHTML = '— БЭЭЭ';
                 } else {
-                    newsTextEl.innerHTML = 'I haven\'t made any posts on the site yet because who am I? That\'s right, a lazy ass.';
-                    lazySignEl.innerHTML = '— Pooping diligently';
+                    newsTextEl.innerHTML = 'Drun druk.';
+                    lazySignEl.innerHTML = '— BEEE';
                 }
             }
         }
@@ -721,8 +705,7 @@
                 topClansTitle: 'TOP CLANS PVP',
                 clansHvhTitle: 'TOP CLANS HVH',
                 hvhTitle: 'TOP HVH',
-                aimTitle: 'TOP AIM',
-                footerText: 'FTAP CIS Community — PvP & News Hub',
+                aimTitle: 'TOP AIM PLAYERS',
                 tabHome: 'Главная',
                 tabNews: 'Новости FTAP'
             },
@@ -736,9 +719,8 @@
                 topClansTitle: 'TOP CLANS PVP',
                 clansHvhTitle: 'TOP CLANS HVH',
                 hvhTitle: 'TOP HVH',
-                aimTitle: 'TOP AIM',
-                footerText: 'FTAP CIS Community — PvP & News Hub',
-                tabHome: 'Main',
+                aimTitle: 'TOP AIM PLAYERS',
+                tabHome: 'Home',
                 tabNews: 'FTAP News'
             }
         };
@@ -752,7 +734,6 @@
             document.getElementById('topCisTitle').innerHTML = t.topCisTitle;
             document.getElementById('topCodersTitle').innerHTML = t.topCodersTitle;
             document.getElementById('topClansTitle').innerHTML = t.topClansTitle;
-            document.getElementById('footerText').innerText = t.footerText;
             
             const clansHvhTitle = document.getElementById('clansHvhTitle');
             if (clansHvhTitle) clansHvhTitle.innerHTML = t.clansHvhTitle;
@@ -814,9 +795,6 @@
             });
         }
 
-        const banner = document.getElementById('discordBanner');
-        setTimeout(() => banner.classList.add('show'), 600);
-        
         const discordLink = document.getElementById('discordLink');
         if (discordLink) {
             discordLink.addEventListener('click', (e) => {
